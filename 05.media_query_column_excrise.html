@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05.media_query_column_excrise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            padding: 0 15%;
+            margin: auto;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .col {
+            width: 100%;
+            border: 1px solid #333;
+            padding: 15px;
+            margin: auto;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        @media(min-width:576px) {
+            .container {
+                width: 95%;
+            }
+
+            .col {
+                width: 48%;
+                margin: 1%;
+            }
+        }
+
+        @media(min-width:992px) {
+            .container {
+                width: 75%;
+            }
+
+            .col {
+                width: 31.3333%;
+                margin: 1%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img src="https://picsum.photos/800/600/?random=1">
+                <h3>當初操作長沙，你要。</h3>
+                <p>阿宅人民共和國三年，熱線一部分日子世界必然廣播，出去各國學院孤獨之</p>
+            </div>
+            <div class="col">
+                <img src="https://picsum.photos/800/600/?random=2">
+                <h3>當初操作長沙，你要。</h3>
+                <p>阿宅人民共和國三年，熱線一部分日子世界必然廣播，出去各國學院孤獨之</p>
+            </div>
+            <div class="col">
+                <img src="https://picsum.photos/800/600/?random=3">
+                <h3>當初操作長沙，你要。</h3>
+                <p>阿宅人民共和國三年，熱線一部分日子世界必然廣播，出去各國學院孤獨之</p>
+            </div>
+            <div class="col">
+                <img src="https://picsum.photos/800/600/?random=4">
+                <h3>當初操作長沙，你要。</h3>
+                <p>阿宅人民共和國三年，熱線一部分日子世界必然廣播，出去各國學院孤獨之</p>
+            </div>
+            <div class="col">
+                <img src="https://picsum.photos/800/600/?random=5">
+                <h3>當初操作長沙，你要。</h3>
+                <p>阿宅人民共和國三年，熱線一部分日子世界必然廣播，出去各國學院孤獨之</p>
+            </div>
+            <div class="col">
+                <img src="https://picsum.photos/800/600/?random=6">
+                <h3>當初操作長沙，你要。</h3>
+                <p>阿宅人民共和國三年，熱線一部分日子世界必然廣播，出去各國學院孤獨之</p>
+            </div>
+            <div class="col">
+                <img src="https://picsum.photos/800/600/?random=7">
+                <h3>當初操作長沙，你要。</h3>
+                <p>阿宅人民共和國三年，熱線一部分日子世界必然廣播，出去各國學院孤獨之</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04.media_query 響應式網頁設計</title>
+    <style>
+        /* 這段是第一個斷點：0-575px使用的樣式 */
+
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-family: '微軟正黑體';
+            box-sizing: border-box;
+            /* 使尺寸切換時產生動畫 */
+            transition: 1s;
+        }
+
+        :root {
+            /* 定義CSS原生變數，--表示宣告 + 變數名稱 */
+            --primary: blue;
+            --secondary: gray;
+            --success: green;
+            --info: lightblue;
+            --warning: orange;
+            --danger: red;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            /* 讓裡面的元素都垂直、水平置中 */
+            justify-content: center;
+            align-items: center;
+            background: url('https://picsum.photos/1920/1080/?random=1');
+        }
+
+        .container {
+            width: 95%;
+            background: #FFF;
+            margin: 1rem auto;
+            padding: 15px;
+            border: 1px solid #000;
+        }
+
+        h1 {
+            /* 使用var()引用原生變數 */
+            color: var(--warning);
+            background-color: var(--success);
+            margin-bottom: 1rem;
+        }
+
+        .isShow {
+            /* 使在最小尺寸時消失 */
+            display: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            width: 150px;
+            color: white;
+            border-radius: 1rem;
+            padding: 1rem;
+            background: #000;
+            left: 0;
+            /* display: none; */
+            opacity: 0;
+        }
+
+        /* ----------------------------------------------------- */
+        /* 定義名詞與使用方式 */
+        /* @ => 使用CSS的一種功能 */
+        /* min-width => 尺寸以上(包含)
+        min-width:576px => 斷點(break point)，表示當裝置尺寸到576px以上時，裡面使用的樣式 */
+        @media(min-width:576px) {}
+
+        /* man-width => 尺寸以下
+        min-width:576px => 表示當裝置尺寸到576px以下時，裡面使用的樣式 */
+        @media(max-width:576px) {}
+
+        /* 576px和768px之間的樣式 */
+        @media(min-width:576px)and(max-width:768px) {}
+
+        /* ---------------------------------------------------------------------- */
+        /* 第二個斷點，裝置576px以上 
+            576-767px使用的樣式*/
+        @media(min-width:576px) {
+            body {
+                background: url('https://picsum.photos/1920/1080/?random=2')no-repeat center/cover;
+            }
+
+            .container {
+                border: 3px dashed #000;
+            }
+
+            h1 {
+                color: yellow;
+                background: darkorchid;
+            }
+
+
+        }
+
+        /* 第三個斷點，裝置768px以上
+            768-991px使用的樣式 */
+        @media(min-width:768px) {
+            body {
+                background: url('https://picsum.photos/1920/1080/?random=3')no-repeat center/cover;
+            }
+
+            .container {
+                width: 80%;
+                border: 10px outset orange;
+                outline: 10px dashed white;
+            }
+
+            h1.title {
+                color: yellow;
+                background: green;
+            }
+
+
+        }
+
+        /* 第四個斷點，裝置992px以上 */
+        @media(min-width:992px) {
+            body {
+                background: url('https://picsum.photos/1920/1080/?random=4') no-repeat center/cover;
+                backdrop-filter: blur(10px);
+            }
+
+            .container {
+                width: 80%;
+                border: 10px solid rgb(35, 50, 80);
+                outline: none;
+                box-shadow: 0 0 50px 25px rgba(0, 0, 0, 0.5);
+            }
+
+            h1.title {
+                color: yellow;
+                background: green;
+            }
+
+
+            .isShow {
+                /* 在這個尺寸之後才打開 */
+                display: inline;
+            }
+
+            .sidebar {
+                /* display: block; */
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">響應式網頁設計<span class="isShow">(Responsive web design, RWD)</span></h1>
+        <ul>
+            <li>1. 響應式網頁設計，讓內容如水一般能適應各種裝置的容器，能在每個裝置尺寸正常瀏覽</li>
+            <li>2. 媒體查詢的斷點(break)為不同裝置尺寸設定通過的位置點，當通過設定的位置點套用該尺寸的樣式</li>
+            <li>3. 響應式一般使用的單位為rem、%、vh、vw等相對單位，字體大小會使用rem，容器的width、height會以%為主</li>
+            <li>4. 寫的時候行動裝置優先，從最小尺寸開始思考內容的設計</li>
+            <!-- &lt;和&gt;是<>(特殊字元) -->
+            <li>5. 文件一定要有這行才能做RWD：&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</li>
+        </ul>
+    </div>
+
+    <div class="sidebar">
+        進入氣息感染斑竹模樣記錄支撐皮膚點這裡是不是，提供變得郵件打算主義來電操作系統迅速，小遊戲落實不代表嚴格，終於用戶名人員圖片，才是小七流程，演唱會試題，始終治療，不過寬頻執行高雄外觀鮮花點這裡下載，生物承諾性別減少流行現場，稿件痛苦，有意擔心高中，觀看培。
+    </div>
+</body>
+
+</html>

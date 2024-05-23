@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03.選擇器優先權計分</title>
+    <style>
+        /* 
+        選擇器的權重(以大老二撲克牌的花色來比喻)
+        1. inline style(黑桃): 1,0,0,0
+        2. id選擇器(愛心):0,1,0,0
+        3. class選擇器、屬性選擇器[]、偽類(例如 :hover) (方塊):0,0,1,0
+        4. 標籤、偽元素(梅花): 0,0,0,1
+
+        PS: 連接符號，例如：空白(後代選擇器)、>(子選擇器)、+(相鄰選擇器)、~(通用兄弟選擇器)、*(通用選擇器)、:not()
+            不影響權重，他們的權重都是0,0,0,0
+            :not()括號內部的參數會計算權重，例如 .title會算權重
+        */
+
+        /* 第一組 */
+        /* 分數 0 1 0 1 */
+        #box1 p {
+            color: green;
+            font-size: 1.5rem;
+        }
+
+        /* 分數 0 0 1 1 */
+        .box p {
+            color: red;
+            font-size: 10rem;
+        }
+
+
+        /* 第二組 */
+        /* 分數 0 1 1 2 */
+        /* 不會變成黃色，因為有inline 權重是1 0 0 0 */
+        #box2 .box h1+p {
+            /* !important 打破權重規則，會以這個為主，但不建議經常使用 */
+            color: yellow !important;
+        }
+
+        /* 
+        其他範例
+        * => 0,0,0,0
+        ul > li => 0,0,0,2
+        a:hover => 0,0,1,1
+        #foo .bar p => 0,1,1,1
+        */
+
+        /* 
+        第一組
+        #section01 .container .row .col .card a:hover => 0,1,5,1
+        
+        第二組 用id開始選，這樣可以保證是該區塊的樣式
+        #section01 .card a:hover => 0,1,2,1
+
+        第三組
+        .card a:hover => 0,0,2,1
+        */
+    </style>
+</head>
+
+<body>
+    <h1>階層權重-替選擇器打分數</h1>
+    <div id="box1">
+        <div class="box">
+            <h1>標題</h1>
+            <p>Lorem ipsum dolor sit amet <a href="#"><em>星期四</em></a> consectetur adipisicing elit. Error aspernatur, soluta libero necessitatibus ut ullam sint vero quis. Voluptatum expedita molestias suscipit! Laboriosam obcaecati a modi mollitia ullam sit voluptas?</p>
+        </div>
+    </div>
+
+    <div id="box2">
+        <div class="box2">
+            <h1>標題</h1>
+            <p style="color: purple;">Lorem ipsum dolor sit amet <a href="#"><em>星期四</em></a> consectetur adipisicing elit. Error aspernatur, soluta libero necessitatibus ut ullam sint vero quis. Voluptatum expedita molestias suscipit! Laboriosam obcaecati a modi mollitia ullam sit voluptas?</p>
+        </div>
+    </div>
+</body>
+
+</html>
